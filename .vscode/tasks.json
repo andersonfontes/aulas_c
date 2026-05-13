@@ -1,24 +1,4 @@
 {
-    "label": "build and run",
-    "type": "shell",
-    "command": "gcc",
-    "args": [
-        "-g",
-        "${file}",
-        "-o",
-        "${fileDirname}/${fileBasenameNoExtension}.exe",
-        "&&",
-        "${fileDirname}/${fileBasenameNoExtension}.exe"
-    ],
-    "group": "build",
-    "presentation": {
-        "reveal": "always",
-        "panel": "shared",
-        "close задач": false
-    },
-    "problemMatcher": [
-        "$gcc"
-    ],
     "tasks": [
         {
             "type": "cppbuild",
