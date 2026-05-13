@@ -45,39 +45,78 @@ int atualiza_tabuleiros(int jogador, int jogada)
         tabuleiro_logico[linha][coluna] = num;
         tabuleiro_visivel[linha][coluna] = letra;
 
-        if (jogador == 1){ return 2; }
-        if (jogador == 2){ return 1; }
+        if (jogador == 1)
+        {
+            return 2;
+        }
+        if (jogador == 2)
+        {
+            return 1;
+        }
 
         return 1;
     }
     else
     {
-        printf("\n*** Jogada Invalida - Jogue Novamente ***\n");;
-        return 0;
+        printf("\n*** Jogada Invalida - Jogue Novamente ***\n");
+        ;
+        return jogador;
     }
 }
 
-int verifica_vencedor(){
+int verifica_vencedor()
+{
     int vencedor = 0;
     int soma_linhas = 0;
-    
-    // verificando as linhas
-    for (int i = 0; i < 3; i++)  
+    int soma_colunas = 0;
+    int soma_diagonal1 = 0;
+    int soma_diagonal2 = 0;
+
+    // verificando as diagonais
+    soma_diagonal1 = tabuleiro_logico[0][0] + tabuleiro_logico[1][1] + tabuleiro_logico[2][2];
+    soma_diagonal2 = tabuleiro_logico[0][2] + tabuleiro_logico[1][1] + tabuleiro_logico[2][0];
+
+    if (soma_diagonal1 == 3 || soma_diagonal1 == -3)
+    {
+        vencedor = soma_diagonal1 / 3;
+    }
+
+    if (soma_diagonal2 == 3 || soma_diagonal2 == -3)
+    {
+        vencedor = soma_diagonal2 / 3;
+    }
+
+    // verificando as linhas e colunas
+    for (int i = 0; i < 3; i++)
     {
         for (int j = 0; j < 3; j++)
         {
             soma_linhas += tabuleiro_logico[i][j];
-            //printf("\n\n -- somatoria de linha esta em : %d --\n\n", soma_linhas);
-        
+            soma_colunas += tabuleiro_logico[j][i];
 
-        if(soma_linhas == 3 || soma_linhas == -3){
-            vencedor = soma_linhas / 3;
+            if (soma_linhas == 3 || soma_linhas == -3)
+            {
+                vencedor = soma_linhas / 3;
+                break;
+            }
+
+            if (soma_colunas == 3 || soma_colunas == -3)
+            {
+                vencedor = soma_colunas / 3;
+                break;
+            }
+        }
+
+        if (vencedor != 0)
+        {
             break;
-        
-        }  
-        
-        if(vencedor != 0){ break; }
-        else {soma_linhas = 0; }
+        }
+        else
+        {
+            soma_linhas = 0;
+            soma_colunas = 0;
+        }
     }
+
     return vencedor;
 }
