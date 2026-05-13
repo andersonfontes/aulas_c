@@ -17,11 +17,11 @@ void mostrar_tabuleiro()
     }
 }
 
-int num = 0;
-char letra = 'N';
-
 int atualiza_tabuleiros(int jogador, int jogada)
 {
+    int num = 0;
+    char letra = 'N';
+
     if (jogador == 1)
     {
         num = 1;
@@ -54,7 +54,6 @@ int atualiza_tabuleiros(int jogador, int jogada)
         {
             return 1;
         }
-        
 
         return 1;
     }
@@ -117,8 +116,7 @@ int verifica_vencedor()
         {
             soma_linhas = 0;
             soma_colunas = 0;
-
-    }
+        }
     }
 
     return vencedor;

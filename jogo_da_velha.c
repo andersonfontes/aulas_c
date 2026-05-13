@@ -10,7 +10,7 @@ int main()
 
     printf("**** Digite o nome do Jogador 1: \n");
     scanf(" %s", jogador1);
-    printf("\nJogador 1 cadastrado: \n", jogador1);
+    printf("\nJogador 1 cadastrado: %s \n", jogador1);
     printf("\n**** ATENCAO **** %s SERA O X **********\n\n", jogador1);
 
     printf("**** Digite o nome do Jogador 2: \n");
@@ -31,17 +31,19 @@ int main()
         printf("\n Jogador %d - digite o numero da casa onde deseja jogar:", jogador);
         scanf(" %d", &jogada);
 
-        jogador = atualiza_tabuleiros(jogador, jogada);
+        int proximo_jogador = atualiza_tabuleiros(jogador, jogada);
 
-        if (jogador == 0)
+        if (proximo_jogador == 0)
         {
             printf("\n\nReiniciando jogada......\n\n");
             continue;
         }
 
+        jogador = proximo_jogador;
+
         vencedor = verifica_vencedor();
-        
-        //rotina pra verificar o empate caso acabem as casas
+
+        // rotina pra verificar o empate caso acabem as casas
         total_jogadas++;
 
         if (total_jogadas == 9 && vencedor == 0)
