@@ -2,6 +2,7 @@
 
 char tabuleiro_visivel[3][3] = {{'1', '2', '3'}, {'4', '5', '6'}, {'7', '8', '9'}};
 int tabuleiro_logico[3][3] = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
+int total_jogadas = 0;
 
 void mostrar_tabuleiro()
 {
@@ -53,6 +54,7 @@ int atualiza_tabuleiros(int jogador, int jogada)
         {
             return 1;
         }
+        
 
         return 1;
     }
@@ -115,7 +117,8 @@ int verifica_vencedor()
         {
             soma_linhas = 0;
             soma_colunas = 0;
-        }
+
+    }
     }
 
     return vencedor;
