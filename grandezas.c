@@ -35,7 +35,6 @@
 // Obs.: Qualquer opção diferente das apresentadas no menu (1 a 4) deverão ser informadas ao usuário como 'Opção inválida!'
 // Salvar o código como: grandezas.c
 
-
 #include <stdio.h>
 
 int main(){
